@@ -71,12 +71,16 @@ nnoremap ; :
 nnoremap <S-t>          :tabnew<CR>
 nnoremap <S-h>          :tabprevious<CR>
 nnoremap <S-l>          :tabnext<CR>
+nnoremap <S-w>          :tabclose<CR>
 
 " Moving between panels
 noremap <C-l>   <C-w>l
 noremap <C-h>   <C-w>h
 noremap <C-j>   <C-w>j
 noremap <C-k>   <C-w>k
+
+" remap c-t to ^-[ to have both keys close together
+nnoremap <c-[>  <c-t>
 
 " Select all text (equivalent to Ctrl+A in commont text editors)
 map <Leader>a ggVG
@@ -102,6 +106,9 @@ map <Leader>f :MRU<CR>
 " Open buffer list
 map <Leader>o :BufExplorer<CR>
 
+" Search for the usage of a symbol under the cursor
+map <Leader>c <c-\>s
+
 " Fuzzy file search
 let g:ctrlp_map = '<c-f>'
 
@@ -111,8 +118,8 @@ map <Leader>nb :NERDTreeFromBookmark
 map <Leader>nf :NERDTreeFind<CR>
 
 " Split a window and move onto it
-nnoremap <Leader>v :Vexplore<CR>
-nnoremap <Leader>n :Sexplore<CR>
+nnoremap <Leader>v :vnew<CR>
+nnoremap <Leader>n :new<CR>
 
 " replace ESC with <jk>
 inoremap jk <esc>
@@ -132,38 +139,14 @@ nmap <F2> :w<CR>
 imap <F2> <ESC>:w<CR>i
 " switch between header/source with F4
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+" create new ctags for a new project with F5
+map <F5> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " set tag directories for ctags
 set tags=./tags,tags;$HOME
 
 " change the current directory to the one which you are right now
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-" Mapping to search in the current screen
-nnoremap <silent> \ :set scrolloff=0<CR>VHoL<Esc>:set scrolloff=1<CR>``<C-y>/\%V
-
-" Code                 | Purpose
-" ---                  | ---
-" :set scrolloff=0<CR> | Disable scrolloff so that we can select everything
-" VHol<Esc>            | Select everything on screen, then exit visual mode
-" :set scrolloff=1<CR> | Enable scrolloff again
-" ``                   | Jump back to the last position
-" <C-y>                | Scroll up one line to correct for scrolloff changes
-" /\%V                 | Start a search in the last visual selection
-
-" load cscope maps at startup
-
-"let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
-"let g:netrw_list_hide = '\.o$, ^\.*'
-"let g:netrw_browse_split = 4
-
-"augroup ProjectDrawer
-"  autocmd!
-"  autocmd VimEnter * :Vexplore
-"augroup END
-
-"autocmd FileType netrw setl bufhidden=delete
 
 source ~/.vim/plugins/cscope_maps.vim
 source ~/.vim/plugins/smooth_scroll.vim
@@ -181,8 +164,7 @@ let g:chromatica#responsive_mode=1
 
 " omnicomplete highlights
 set tags+=~/.vim/tags/cpp
-" create new ctags for a new project with C-F12
-map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+set tags+=/home/paolo/Lavoro/vimar/source/toolchain/2.3.1/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/tags
 
 " OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
@@ -205,4 +187,3 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-
