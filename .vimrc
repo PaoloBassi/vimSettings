@@ -88,6 +88,9 @@ noremap <C-h>   <C-w>h
 noremap <C-j>   <C-w>j
 noremap <C-k>   <C-w>k
 
+" In insert mode, insert a couple of curly braces and be ready to insert
+inoremap { {<CR><BS>}<Esc>ko
+
 " remap c-t to ^-[ to have both keys close together
 nnoremap <c-[>  <c-t>
 
