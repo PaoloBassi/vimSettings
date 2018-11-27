@@ -139,6 +139,9 @@ inoremap jk <esc>
 " Insert newline and stay in normal mode
 map <Enter> O<Esc>
 
+" remove search highlights with backspace
+map <BS> :noh<Esc>
+
 " Smooth scrolling
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
