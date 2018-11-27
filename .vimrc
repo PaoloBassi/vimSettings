@@ -12,9 +12,13 @@ endif
 colorscheme gruvbox 
 set background=dark
 
+" gruvbox configuration flags
+let g:gruvbox_italic = '1'
+let g:gruvbox_italicize_strings= '1'
+
 " set font to gvim
 if has('gui_running')
-  set guifont=Inconsolata\ 10
+  set guifont=FiraMono\ 10
 endif
 
 " Numbers at the beginning of each line
@@ -62,6 +66,11 @@ set ruler
 
 " intelligent comments
 set comments=sl:/*,mb:\ *,elx:\ */
+
+" ignore case and infer case from autocomplete
+set ignorecase
+set infercase
+set wildignorecase
 
 " use ; as :
 nnoremap ; :
