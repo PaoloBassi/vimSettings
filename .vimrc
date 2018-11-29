@@ -156,6 +156,8 @@ imap <F2> <ESC>:w<CR>i
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 " create new ctags for a new project with F5
 map <F5> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+" toggle the tagbar
+nmap <F8> :TagbarToggle<CR> 
 
 " set tag directories for ctags
 set tags=./tags,tags;$HOME
@@ -168,6 +170,8 @@ source ~/.vim/plugins/smooth_scroll.vim
 
 " Start nerdtree
 autocmd vimenter * NERDTree
+" Start Tagbar at start
+autocmd VimEnter * nested :TagbarOpen
 
 " Hide files with certain extensions
 let NERDTreeIgnore = ['\.o$', '\.lo$', '\.la$']
