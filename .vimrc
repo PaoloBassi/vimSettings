@@ -18,7 +18,11 @@ let g:gruvbox_italicize_strings= '1'
 
 " set font to gvim
 if has('gui_running')
-  set guifont=FiraMono\ 10
+  set guifont=FiraMono\ 9 
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=r
+  set guioptions-=L
 endif
 
 " Numbers at the beginning of each line
