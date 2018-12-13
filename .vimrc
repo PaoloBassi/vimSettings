@@ -122,8 +122,13 @@ map <Leader>f :MRU<CR>
 " Open buffer list
 map <Leader>o :BufExplorer<CR>
 
-" Search for the usage of a symbol under the cursor
-map <Leader>c <c-\>s
+" Search for something under the cursor:
+" all references 
+map <Leader>s <c-\>s  
+" the calls (only for functions)
+map <Leader>c <c-\>c
+" call an egrep on the word
+map <Leader>e <c-\>e
 
 " Fuzzy file search
 let g:ctrlp_map = '<c-f>'
