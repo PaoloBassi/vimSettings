@@ -27,6 +27,9 @@ endif
 
 " Numbers at the beginning of each line
 set number
+
+" set the gitgutter update time to 100 millseconds
+set updatetime=100
           
 " enable syntax processing
 syntax enable
@@ -92,9 +95,6 @@ noremap <C-h>   <C-w>h
 noremap <C-j>   <C-w>j
 noremap <C-k>   <C-w>k
 
-" In insert mode, insert a couple of curly braces and be ready to insert
-nnoremap <c-P> i{<CR><BS>}<Esc>ko
-
 " remap c-t to ^-[ to have both keys close together
 nnoremap <c-[>  <c-t>
 
@@ -129,6 +129,15 @@ map <Leader>s <c-\>s
 map <Leader>c <c-\>c
 " call an egrep on the word
 map <Leader>e <c-\>e
+
+" create a search and replace command with the word under the cursor
+:nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+" gitgutter remaps
+nmap <Leader>[ <Plug>GitGutterPrevHunk
+nmap <Leader>] <Plug>GitGutterNextHunk
+nmap <Leader>uh <Plug>GitGutterUndoHunk
+map <Leader>gt :GitGutterLineHighlightsToggle<CR>
 
 " Fuzzy file search
 let g:ctrlp_map = '<c-f>'
